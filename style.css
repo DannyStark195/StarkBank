@@ -482,6 +482,9 @@ main{
     body{
         padding: 10px;
     }
+    header{
+    margin-bottom: 50px;
+    }
     .wrapper{
         padding: 1rem 1rem 0.5rem;
     }
