@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stark Bank || Settings</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <script src="https://kit.fontawesome.com/c1b9ae5c8f.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+<body class="dashboard-body">
+        <div class="nav-bar">
+        
+            <div class="nav-header">
+                <h1><i>Stark Bank</i></h1>
+            </div>
+            
+            <nav class="nav-icons">
+                <div class="icon-wrapper">
+                    <a href="dashboard.html" class="icon" title="Transfer">
+                        <!-- <i class="fas fa-light fa-house"></i> -->
+                        <i class="fas fa-solid fa-cube"></i>
+                    </a>
+                     <p class="icon-info">Overview</p>
+                </div>
+                
+                <div class="icon-wrapper">
+                    <a href="expenses.html" class="icon" title="Expenses">
+                        <i class="fas fa-thin fa-file-invoice-dollar"></i>
+                    </a>
+                    <p class="icon-info">Expenses</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="transfer.html" class="icon" title="Transfer">
+                        <i class="fas fa-thin fa-money-bill-transfer"></i>
+                    </a>
+                     <p class="icon-info">Transfer</p>
+                </div>
+
+
+                <div class="icon-wrapper">
+                    <a href="deposit.html" class="icon" title="Deposit">
+                        <i class="fas fa-light fa-piggy-bank"></i>
+                    </a>
+                    <p class="icon-info">Deposit</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="withdraw.html" class="icon" title="Withdraw">
+                    <!-- <i class="fas fa-light fa-arrow-up-from-bracket"></i> -->
+                        <i class="fas fa-thin fa-circle-dollar-to-slot"></i>
+                    </a>
+                    <p class="icon-info">Withdraw</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="index.html" class="icon" title="Logout">
+                        <i class="fas fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                    <p class="icon-info">Sign out</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="settings.html" class="icon  active" title="Settings">
+                        <i class="fas fa-thin fa-gear"></i>
+                    </a>
+                    <p class="icon-info">Settings</p>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div id="settings">
+             <h2 class="heading-2">Settings</h2>
+
+             <div class="setting">
+                <h3>Theme</h3>
+                    <div class="themes">
+                        <div class="theme display-flex-jcc">
+                            <p>Light Theme</p>
+                            <ion-icon name="radio-button-off-outline" class="theme-icon" id="light-theme"></ion-icon>
+                        </div>
+                        <div class="theme display-flex-jcc">
+                            <p>Dark Theme</p>
+                            <!-- <ion-icon name="radio-button-off-outline" class="theme-icon" id=""></ion-icon> -->
+                            <ion-icon name="radio-button-on-outline" class="theme-icon" id="dark-theme"></ion-icon>
+
+                        </div>
+                        <div class="theme display-flex-jcc">
+                            <p>System Default</p>
+                            <ion-icon name="radio-button-off-outline" class="theme-icon" id="system-default"></ion-icon>
+                        </div>
+                    </div>
+             </div>
+             
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

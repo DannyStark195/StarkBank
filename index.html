@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stark Bank</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+    
+</head>
+<body>
+    <header>
+        <h1><i>Stark Bank</i></h1>
+    </header>
+    <div class="wrapper">
+            <div class="form-wrapper  active" id="sign-up-wrapper">
+                <h2 class="heading-2">Sign Up</h2>
+                <form action="" id="sign-up-form">
+                    <div class="input-wrapper">
+                        <label for="username-input">Username</label>
+                        <input type="text" name="username" id="username-input">
+
+                        <span id="username-error-message" class="error-message">
+                        </span>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="password-input">Password</label>
+                        <input type="password" name="password" id="password-input">
+
+                        <span id="password-error-message" class="error-message">
+                             
+                        </span>
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <label for="confirm-password-input">Confirm Password</label>
+                        <input type="password" name="confirm-password" id="confirm-password-input">
+                        <span id="confirm-password-error-message" class="error-message">
+                             <!-- Confirm Password required* -->
+                             Password does not match*
+                        </span>
+                    </div>
+                    <button type="submit" class="form-btn" id="sign-up-btn">Sign Up</button>
+                    <p class="message-sm-center">Already have an account? <span id="sign-in-display" class="form-link">Sign In</span></p>
+                </form>
+            </div>
+        
+               
+        <div class="form-wrapper" id="sign-in-wrapper">
+            <h2 class="heading-2">Sign In</h2>
+            <form action="" id="sign-in-form">
+                <div class="input-wrapper">
+                    <label for="account-number-input">Account number</label>
+                    <input type="text" name="account-number-input" id="account-number-input">
+                    <span id="account-error-message" class="error-message">
+                             Account does not exist*
+                             <!-- Password too short* -->
+                    </span>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="account-password-input">
+                    <span id="account-password-error-message" class="error-message">
+                             Password not correct*
+                             <!-- Password too short* -->
+                    </span>
+                </div>
+                
+                
+                <button class="form-btn" id="sign-in-btn" type="submit">Sign In</button>
+                <p class="message-sm-center">Don't have an account? <span id="sign-up-display" class="form-link">Sign Up</span></p>
+            </form>
+        </div>
+
+    </div>
+
+    
+    <div class="dark-overlay " id="dark-overlay">
+        <div class="success-message" id="success-message">
+            <div class="success-message-heading">
+                <img src="assets/images/icon-success-check.svg" alt="icon-success-check">
+                <p>Account Created</p>
+            </div>
+            <div class="success-message-bottom">
+                <p>Your Account number is <strong><span id="account-number" class="account-number"></span></strong></p>
+                <button class="form-btn" id="sign-in-overlay-btn">Sign In</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

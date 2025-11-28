@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stark Bank || Deposit</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/c1b9ae5c8f.js" crossorigin="anonymous" defer></script>
+
+</head>
+<body class="dashboard-body">
+        <div class="nav-bar">
+        
+            <div class="nav-header">
+                <h1><i>Stark Bank</i></h1>
+            </div>
+            
+            <nav class="nav-icons">
+                <div class="icon-wrapper">
+                    <a href="dashboard.html" class="icon" title="Transfer">
+                        <!-- <i class="fas fa-light fa-house"></i> -->
+                        <i class="fas fa-solid fa-cube"></i>
+                    </a>
+                     <p class="icon-info">Overview</p>
+                </div>
+                
+                <div class="icon-wrapper">
+                    <a href="expenses.html" class="icon" title="Expenses">
+                        <i class="fas fa-thin fa-file-invoice-dollar"></i>
+                    </a>
+                    <p class="icon-info">Expenses</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="transfer.html" class="icon" title="Transfer">
+                        <i class="fas fa-thin fa-money-bill-transfer"></i>
+                    </a>
+                     <p class="icon-info">Transfer</p>
+                </div>
+
+
+                <div class="icon-wrapper">
+                    <a href="deposit.html" class="icon active" title="Deposit">
+                        <i class="fas fa-light fa-piggy-bank"></i>
+                    </a>
+                    <p class="icon-info">Deposit</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="withdraw.html" class="icon" title="Withdraw">
+                    <!-- <i class="fas fa-light fa-arrow-up-from-bracket"></i> -->
+                        <i class="fas fa-thin fa-circle-dollar-to-slot"></i>
+                    </a>
+                    <p class="icon-info">Withdraw</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="index.html" class="icon" title="Logout">
+                        <i class="fas fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                    <p class="icon-info">Sign out</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="settings.html" class="icon" title="Settings">
+                        <i class="fas fa-thin fa-gear"></i>
+                    </a>
+                    <p class="icon-info">Settings</p>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div id="deposit">
+            
+            <div class="wrapper">
+                <div class="form-wrapper active" id="deposit-wrapper">
+                    <h2 class="heading-2">Deposit</h2>
+                    <form action="" id="deposit-form">
+                        <div class="input-wrapper">
+                            <label for="account-number-input">Account number</label>
+                            <input type="text" name="account-number-input" id="account-number-input">
+                            <span id="account-error-message" class="error-message">
+                            </span>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="amount-input">Amount</label>
+                            <input type="text" name="amount-input" id="amount-input">
+                            <span id="amount-error-message" class="error-message">
+                            </span>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="transaction-desc-input">Description</label>
+                            <input type="text" name="transaction-desc-input" id="transaction-desc-input">
+                            <span id="tansaction-desc-error-message" class="error-message">
+                            </span>
+                        </div>
+
+                        <button type="submit" class="form-btn">Deposit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

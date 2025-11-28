@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stark Bank || Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/c1b9ae5c8f.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+</head>
+<body class="dashboard-body">
+        <div class="nav-bar">
+        
+            <div class="nav-header">
+                <h1><i>Stark Bank</i></h1>
+            </div>
+            
+            <nav class="nav-icons">
+                <div class="icon-wrapper">
+                    <a href="dashboard.html" class="icon active" title="Transfer">
+                        <!-- <i class="fas fa-light fa-house"></i> -->
+                        <i class="fas fa-solid fa-cube"></i>
+                    </a>
+                     <p class="icon-info">Overview</p>
+                </div>
+                
+                <div class="icon-wrapper">
+                    <a href="expenses.html" class="icon" title="Expenses">
+                        <i class="fas fa-thin fa-file-invoice-dollar"></i>
+                    </a>
+                    <p class="icon-info">Expenses</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="transfer.html" class="icon" title="Transfer">
+                        <i class="fas fa-thin fa-money-bill-transfer"></i>
+                    </a>
+                     <p class="icon-info">Transfer</p>
+                </div>
+
+
+                <div class="icon-wrapper">
+                    <a href="deposit.html" class="icon" title="Deposit">
+                        <i class="fas fa-light fa-piggy-bank"></i>
+                    </a>
+                    <p class="icon-info">Deposit</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="withdraw.html" class="icon" title="Withdraw">
+                    <!-- <i class="fas fa-light fa-arrow-up-from-bracket"></i> -->
+                        <i class="fas fa-thin fa-circle-dollar-to-slot"></i>
+                    </a>
+                    <p class="icon-info">Withdraw</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="index.html" class="icon" title="Logout">
+                        <i class="fas fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                    <p class="icon-info">Sign out</p>
+                </div>
+
+                <div class="icon-wrapper">
+                    <a href="settings.html" class="icon" title="Settings">
+                        <i class="fas fa-thin fa-gear"></i>
+                    </a>
+                    <p class="icon-info">Settings</p>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div id="dashboard">
+            <div class="dashboard">
+                <h2 class="greeting">Hi, <span id="username-span">Daniel</span></h2>
+                <div class="account-number-wrapper">
+                    Account number 
+                    <span id="account-number" class="account-number"></span> -active
+                </div>
+                <div class="account-details">
+                    <i class="fas fa-solid fa-hand-holding-dollar account-details-bg"></i>
+
+                    <div class="account-details-top display-flex-jcc">
+                        <div class="account-details-top-left display-flex-jcc">
+                            
+                            <p>Balance</p>
+                            <ion-icon name="eye-off" id="eye-icon" class="eye-icon"></ion-icon>
+                            <!-- <ion-icon name="eye-off"></ion-icon> -->
+                         </div>
+                         
+                        <div class="account-details-top-right display-flex-jcc">
+                         <p>Transaction history</p>
+                            <a href="expenses.html" class="display-flex-jcc">
+                                <!-- <div> -->
+                                <i class="fas fa-thin fa-chevron-right"></i>
+                            <!-- <ion-icon name="chevron-down"></ion-icon> -->
+                                <!-- </div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="account-details-bottom display-flex-jcc">
+                         <div class="account-balance-wrapper display-flex-jcc">
+                                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/naira.png" alt="naira" class="currency-icon"/>
+                                <h4 class="account-balance" id="account-balance">0.00</h4>
+                        </div >
+
+
+                        <div class="add-money-wrapper">
+                        <i class="fas fa-thin fa-plus add-icon"></i>
+                            <a href="deposit.html">
+                                <button class="add-money-btn">Deposit</button>
+                            </a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            
+
+            <div id="expenses" class="expenses">
+                <!-- <h3>Expense Tracker</h3> -->
+                <h3>Transaction History</h3>
+
+                <div class="expense-tracker" id="expense-tracker">
+                                        
+                    <div class="no-expense" id="no-expense">
+                        No transactions yet
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+
+       
+
+    </main>
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>
