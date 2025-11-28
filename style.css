@@ -5,14 +5,13 @@
     padding: 0;
     box-sizing: border-box;
 }
- :root{
+:root{
     --primary-color: hsl(0, 89%, 59%);
     --primary-light: #ff6666;
     --primary-color-dark: #b30000;
     --primary-color-overlay: rgba(255, 0, 0, 0.6);
     --primary-gradient: linear-gradient(130deg, var(--primary-color), var(--primary-light));
     --primary-green: #4ade80;
-    
     --logo-font: 'Roboto' sans-serif;
     --bg-dark: #050810;
     --text-light: #fff;
@@ -57,16 +56,12 @@ h1{
     max-width: 600px;
     margin: 0 auto;
     background-color: var(--bg-dark-overlay);
-    /* background-color: var(--bg-light-overlay); */
     backdrop-filter: blur(10px);
     border: 2px solid var(--border-light);
-    /* border: 2px solid var(--border-dark); */
-
     box-shadow: var(--shadow-lg);
     padding: 1.5rem 2rem 1rem;
     color: var(--text-black);
     border-radius: 20px;
-   
 }
 
 
@@ -91,26 +86,19 @@ h1{
 
 .form-wrapper .input-wrapper label{
     color: var(--text-gray);
-    /* color: var(--text-dark); */
     font-size: 0.95rem;
 }
 .form-wrapper .input-wrapper input{
     border-radius: 10px;
     padding: 1rem;
     background-color: var(--bg-dark-overlay);
-    /* background-color: var(--bg-light-overlay); */
-
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
-    /* border: 1px solid var(--border-dark); */
     color: var(--text-gray);
-    /* color: var(--text-dark); */
 }
 .form-wrapper .input-wrapper input::placeholder{
     color: var(--text-gray);
 }
-
-
 .form-btn{
     padding: 1rem 1.5rem;
     margin-block: 20px 10px;
@@ -119,16 +107,13 @@ h1{
     font-weight: 600;
     text-align: center;
     background-color: var(--text-light);
-    /* background-color: var(--primary-color); */
     color: var(--text-dark);
-    /* color: var(--text-light); */
     cursor: pointer;
 }
 .form-link{
     cursor: pointer;
     text-decoration: none;
     color: var(--text-gray);
-    /* color: var(--text-dark); */
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -141,77 +126,66 @@ h1{
     font-size: 0.9rem;
     color: var(--text-gray);
 }
-
-
-
 .dark-overlay{
-            display: none;
-            min-block-size: 130vh;
-            background-color: #00000060;
-            z-index: 99;
-            inline-size: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            justify-content: center;
-        }
+    display: none;
+    min-block-size: 130vh;
+    background-color: #00000060;
+    z-index: 99;
+    inline-size: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    justify-content: center;
+}
 
 .success-message{
-            /* display: none; */
-            background-color: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--text-light);
-            box-shadow: var(--shadow-lg);
-            block-size: 7rem;
-            inline-size: 85%;
-            max-inline-size: 700px;
-            margin: 0 auto;
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            font-size: 0.8rem; 
-            position: relative;
-            top: 150px;
-            color: var(--text-light);
-           
-        }
-        .success-message-heading{
-            display: flex;
-            gap:0.5rem;
-            align-items: center;
-            color: white;
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--text-light);
+    box-shadow: var(--shadow-lg);
+    block-size: 7rem;
+    inline-size: 85%;
+    max-inline-size: 700px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem; 
+    position: relative;
+    top: 150px;
+    color: var(--text-light);
+}
+.success-message-heading{
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+    color: white;
 
 
-        }
-        .success-message-heading p{
-            font-size: 0.9rem;
-            font-weight: 700;
+}
+.success-message-heading p{
+    font-size: 0.9rem;
+    font-weight: 700;
 
-        }
-        .success-message-bottom{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+}
+.success-message-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .success-message-bottom button{
-            margin: 0;
-        }
-
+.success-message-bottom button{
+    margin: 0;
+}
 
 .error-message{
     display: none;
     color: var(--primary-color);
 }   
 
-
-
-
 .dashboard-body{
     display: flex;
     padding: 0;
     overflow-y: hidden;
-    /* background-color: var(--text-light); */
-    /* color: var(--text-dark); */
 }
 .dashboard-body a{
     text-decoration: none;
@@ -219,8 +193,6 @@ h1{
 }
 .nav-bar{
     border-right: 1px solid var(--border-light);
-    /* border-right: 1px solid var(--border-dark); */
-    /* inline-size: 20%; */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -229,53 +201,39 @@ h1{
 }
 .nav-header{
   padding: 10px 5px;  
-  /* margin-bottom: 50px; */
   block-size: 80px;
 
 }
 
 .nav-header h1{
-     font-size: 1.7rem;
-     /* word-wrap: break-word; */
-     /* overflow-wrap: anywhere; */
-    /* position: absolute; */
-    /* top: 10px; */
-    /* left: 0;  */
+    font-size: 1.7rem;
     max-inline-size: 100px;
 }
 .nav-icons{
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
     max-block-size: 60%;
     overflow-y: auto;
     gap: 2rem;
-    /* padding: 10px; */
-    
 }
 
 .icon-wrapper{
     color: var(--text-gray);
-    /* color: var(--text-dark); */
     text-align: center;
 }
 .icon{
-    /* background-color: var(--primary-light); */
     border-radius: 20px;
     inline-size: 50px;
     block-size: 50px;
-    /* margin: 0 auto; */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    
 }
 
 .icon:hover{
     color: var(--text-light);
-    /* color: var(--primary-color); */
 }
 
 .icon-info{
@@ -285,7 +243,6 @@ h1{
 }
 .icon-info:hover{
     color: var(--text-light);
-    /* color: var(--primary-color); */
 }
 .icon.active{
     display: flex;
@@ -301,7 +258,6 @@ main{
     padding: 3rem 2rem 1rem 2rem;
     overflow-y: auto;
     max-block-size: 100vh;
-    /* color: var(--text-dark); */
 }
 
 
@@ -311,15 +267,12 @@ main{
 .account-details{
     background: var(--primary-gradient);
     color: var(--text-dark);
-    /* color: var(--text-light); */
     padding: 2rem 1.5rem;
     margin-block: 20px;
     border-radius: 20px;
     position: relative;
-    /* z-index: 3; */
     display: grid;
     gap: 5px;
-    
 }
 
 .account-details .account-details-bg{
@@ -328,7 +281,6 @@ main{
     top: 5px;
     font-size: 7.5rem;
     opacity: 0.2;
-    
 }
 
 .display-flex-jcc{
@@ -338,18 +290,7 @@ main{
     align-items: center;
     z-index: 3;
 }
-/* .account-details .account-details-top{
-   
 
-}
-
-.account-details-top-left p{
-    font-size: 0.9rem;
-   
-}
-.account-details .account-details-bottom{
- 
-} */
 .account-details-top-left{
     gap: 12px;
 }
@@ -358,12 +299,10 @@ main{
     margin-top: 10px;
 }
 .account-balance{
-    /* color: var(--text-dark); */
     font-size: 1.7rem;
 }
 .account-number{
     cursor: pointer;
-
 }
 .eye-icon{
     cursor: pointer;
@@ -381,42 +320,35 @@ main{
 .add-money-btn{
     color: var(--primary-light);
     background-color: var(--text-dark);
-    /* background-color: var(--text-light); */
     padding: 10px 25px 10px 30px;
     border-radius: var(--border-radius);
     font-size: 1rem;
     font-weight: 600;
     border: 1px solid var(--text-dark);
-    /* border: 1px solid var(--text-light); */
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 .expense-tracker{
     border-top: 1px solid var(--text-gray);
-    /* border-top: 1px solid var(--border-dark); */
     margin-top: 10px;
     overflow-y: auto;
 }
 
 .expense{
-    /* justify-content: start; */
     gap: 3rem;
     background-color: var(--bg-dark-overlay);
     margin-block: 20px;
     padding: 1rem;
     border-radius: 20px;
     border: 1px solid var(--text-gray);
-    /* border: 1px solid var(--border-dark); */
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
-    
 }
 
 .expense:hover{
     transform: translateY(-3px);
 }
-
 
 .expense.green{
     border-right: 5px solid var(--primary-green);
@@ -427,24 +359,16 @@ main{
 }
 .expense-info{
     color: var(--text-light);
-    /* color: var(--text-dark); */
-    /* font-size: 1.1rem; */
-     
 }
 
 .no-expense{
     display: none;
     padding-block: 1rem;
-    /* min-block-size: 200px; */
     inline-size: 100%;
-    /* justify-content: center; */
-    /* align-items: center; */
     font-size: 1.2rem;
     opacity: 0.5;
     color: var(--text-light);
-
 }
-
 
 .remove-expense-icon{
     color: var(--primary-color);
@@ -478,6 +402,7 @@ main{
 .active{
     display: block;
 }
+
 @media (max-width: 600px) {
     body{
         padding: 10px;
@@ -499,41 +424,13 @@ main{
         margin-top: 1rem;
     }
 
-    .form-wrapper .input-wrapper label{
-        color: var(--text-gray);
-    /* color: var(--text-dark); */
-    }
-    .form-wrapper .input-wrapper input{
-        border-radius: 10px;
-        padding: 1rem;
-        background-color: var(--bg-dark-overlay);
-        /* background-color: var(--bg-light-overlay); */
-
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--border-light);
-        /* border: 1px solid var(--border-dark); */
-        color: var(--text-gray);
-        /* color: var(--text-dark); */
-        }
-    .form-wrapper .input-wrapper input::placeholder{
-        color: var(--text-gray);
-    }
-
-
-    .success-message-bottom .form-btn{
-        padding: 12px 1rem;
-        
-    }
     .dashboard-body{
         flex-direction: column-reverse;
         overflow-y: auto;
-        /* justify-content: flex-start; */
+        
     }
 
     .nav-bar{
-        /* min-block-size: 20%; */
-        /* display: flex; */
-        flex-direction: row;
         position: fixed;
         bottom: 0;
         overflow-x: auto;
@@ -556,21 +453,17 @@ main{
    }
    .greeting {
     font-size: 1.4rem;
-}
-
+    }
    .account-details{
     padding: 1rem;
     font-size: 0.9rem;
    }
    .account-balance{
     font-size: 1.45rem;
-    
    }
-
    .add-money-btn {
     padding: 10px 25px 10px 30px;
    }
-
    .no-expense{
         font-size: 1.1rem;
    }

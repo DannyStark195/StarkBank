@@ -1,22 +1,26 @@
-//Sign up Logic
+//Get all needed elements by id
 const signUpWrapper = document.getElementById('sign-up-wrapper');
 const signInWrapper = document.getElementById('sign-in-wrapper');
 const signInDisplay = document.getElementById('sign-in-display');
 const signUpDisplay = document.getElementById('sign-up-display');
+
 const signUpBtn = document.getElementById('sign-up-btn');
 const signInBtn = document.getElementById('sign-in-btn');
 
 const signUpForm = document.getElementById('sign-up-form');
 const signInForm = document.getElementById('sign-in-form');
+
 const signInOverlayBtn = document.getElementById('sign-in-overlay-btn'); 
 const usernameInput = document.getElementById('username-input');
 const passwordInput = document.getElementById('password-input');
 const confirmPasswordInput = document.getElementById('confirm-password-input');
 const accountNumberInput = document.getElementById('account-number-input');
 const accountPasswordInput = document.getElementById('account-password-input');
+
 const usernameError = document.getElementById('username-error-message');
 const passwordError = document.getElementById('password-error-message');
 const allErrorMessages = document.querySelectorAll('.error-message');
+
 const confirmPasswordError = document.getElementById('confirm-password-error-message');
 const accountError = document.getElementById('account-error-message');
 const accountPasswordError = document.getElementById('account-password-error-message');
@@ -41,50 +45,75 @@ const transactionDescError = document.getElementById('tansaction-desc-error-mess
 
 const destinationAccountNumberInput = document.getElementById('destination-account-number-input');
 const destinationAccountError = document.getElementById('destination-account-error-message');
-const eyeIcon = document.getElementById('eye-icon');
 
+const dashboard = document.getElementById('dashboard');
+const expenses = document.getElementById('expenses');
+const deposit = document.getElementById('deposit');
+const transfer = document.getElementById('transfer');
+
+
+//Icon elements
+const eyeIcon = document.getElementById('eye-icon');
 const lightThemeIcon = document.getElementById('light-theme');
 const darkThemeIcon = document.getElementById('dark-theme');
 const systemDefaultIcon = document.getElementById('system-default');
+
+
+//Icon names
+const eyeClose = 'eye-off';
+const eyeOpen = 'eye';
 const iconOn = 'radio-button-on-outline';
 const iconOff = 'radio-button-off-outline';
 
-// localStorage.clear()
 document.addEventListener('DOMContentLoaded', function(){
     saveUsers(), 
     changeTheme()
 });
+
+// Save all users to local storage
 function saveUsers(){
     let Users = retrieveUsers()
-    if(Users.length ===0){
+    if(Users.length ===0){ //Create inital user if no user
         Users.push({
-        username: 'user1',
+        username: 'DannyStark',
         password: '****', 
         accountNumber: '101010',
-        balance: parseFloat(0),
+        balance: 1000000,
         expenses: []
-    },
-    {
-        username: 'user2',
-        password: '****', 
-        accountNumber: '101011',
-        balance: 0.00,
-        expenses: []
-    })
-
+        }
+    )
     }
     localStorage.setItem('Users', JSON.stringify(Users));
 }
 
+//Retrieve all users from local storage
 function retrieveUsers(){
     let Users = localStorage.getItem('Users');
     Users = Users ? JSON.parse(Users) : [];
     return Users
 }
 
+//Update users and save to localStorage
 function updateUsers(Users){
      localStorage.setItem('Users', JSON.stringify(Users));
 }
+
+//Save current user to local storage
+function saveCurrentUser(currentUser){
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+}
+
+//Update current user to local storage
+function updateCurrentUser(currentUser){
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+}
+//Retrieve current user from local storage
+function retrieveCurrentUser(){
+    let currentUser = localStorage.getItem('currentUser');
+    currentUser = currentUser ? JSON.parse(currentUser) : [];
+    return currentUser;
+}
+
 if(signUpDisplay){signUpDisplay.addEventListener('click', showSignUp);}
 
 if(signInDisplay){signInDisplay.addEventListener('click', showSignIn);}
@@ -93,36 +122,38 @@ if(signInOverlayBtn){signInOverlayBtn.addEventListener('click', showSignIn);}
 
 if(signUpForm){signUpForm.addEventListener('submit', (e) =>{
     e.preventDefault();
-    
     validateSignUp(usernameInput, passwordInput, confirmPasswordInput)
 });
 }
+
 if(signInForm){
     signInForm.addEventListener('submit', (e) =>{
     e.preventDefault();
-    
     signIn(accountNumberInput, accountPasswordInput)
 });
 }
 
+//Show Sign up form
 function showSignUp(){
     signInWrapper.classList.remove('active');
     signUpWrapper.classList.add('active');
     darkOverlay.classList.remove('active');
 }
 
+//Show Sign in form
 function showSignIn(){
     signUpWrapper.classList.remove('active');
     signInWrapper.classList.add('active');
     darkOverlay.classList.remove('active');
 }
+
+//Validate sign up inputs
 function validateSignUp(usernameInput, passwordInput, confirmPasswordInput){
     let valid = true;
     allErrorMessages.forEach((element) => {
             element.classList.remove('active');
-            
-        });
-        
+        }); //remove all error messages
+
     if(usernameInput.value.trim()===''){
             usernameError.classList.add('active');
             usernameError.textContent = 'Username required*'
@@ -143,24 +174,21 @@ function validateSignUp(usernameInput, passwordInput, confirmPasswordInput){
             confirmPasswordError.textContent = 'Confirm password required*';
             valid = false;
     }
-    
     if(confirmPasswordInput.value.trim()!== passwordInput.value.trim()){confirmPasswordError.classList.add('active');
             confirmPasswordError.textContent = 'Password must match*';
             valid = false;
     }
-
     if(valid){
          allErrorMessages.forEach((element) => {
             element.classList.remove('active');
         });
-    
+        //Sign up user once all inputs are valid
         signUp(usernameInput, passwordInput);
     }
 }
+
 function signUp(usernameInput, passwordInput){
-    console.log('signup');
-    Users = retrieveUsers();
-    console.log(Users)
+    let Users = retrieveUsers();
     const userName = usernameInput.value.trim();
     const passWord = passwordInput.value.trim();
 
@@ -173,7 +201,8 @@ function signUp(usernameInput, passwordInput){
         }
    }
 
-   let newAccountNumber = generateAccountNumber()
+   let newAccountNumber = generateAccountNumber();
+
    const newAccount ={
         username: userName,
         password: passWord,
@@ -184,17 +213,14 @@ function signUp(usernameInput, passwordInput){
 
    Users.push(newAccount);
    updateUsers(Users)
-
    displayAccountNumber(newAccountNumber);
 }
 
 function generateAccountNumber(){
     let number = '';
-
     for(let i=0; i<10; i++){
         number += Math.floor(Math.random() *10);
     }
-
     return number
 }
 
@@ -205,18 +231,14 @@ function displayAccountNumber(accountNumber){
 
 function signIn(accountNumberInput, accountPasswordInput){
     let Users = retrieveUsers()
-    console.log(Users)
     let currentUser = null;
-    console.log('sign in')
     const accountNumber = accountNumberInput.value.trim();
     const accountPassword = accountPasswordInput.value.trim();
 
-    console.log(accountNumber)
-    console.log(accountPassword)
     allErrorMessages.forEach((element) => {
             element.classList.remove('active');
         });
-        
+
     for(const user of Users){
         if(user.accountNumber === accountNumber){
             if(user.accountNumber === accountNumber && user.password === accountPassword){
@@ -231,16 +253,11 @@ function signIn(accountNumberInput, accountPasswordInput){
                 accountPasswordError.textContent = 'Password is incorrect*';
                 return
             }
-            // return
         }
-        
    }
-   
-            accountError.classList.add('active');
-            accountError.textContent = 'Account number does not exist*';
-            return
-
-   
+    accountError.classList.add('active');
+    accountError.textContent = 'Account number does not exist*';
+    return
 }
 
 function redirectDashboard(currentUser){
@@ -248,28 +265,15 @@ function redirectDashboard(currentUser){
         return
     }
     saveCurrentUser(currentUser)
-    window.location.href ='dashboard.html';
-}
-function saveCurrentUser(currentUser){
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    window.location.href ='dashboard.html'; //redirect to dashboard
 }
 
-function updateCurrentUser(currentUser){
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-}
-
-function retrieveCurrentUser(){
-    let currentUser = localStorage.getItem('currentUser');
-    currentUser = currentUser ? JSON.parse(currentUser) : [];
-
-    return currentUser
-}
-
-const dashboard = document.getElementById('dashboard');
+//Show dashboard once in dashboard.html
 if(dashboard){
     showDashboard()
 }
 
+//Show dashboard function
 function showDashboard(){
     console.log('dasboard')
     let Users = retrieveUsers()
@@ -283,15 +287,12 @@ function showDashboard(){
     
 }   
 
+//Show expenses function
 function showExpenses(currentUser){
-    console.log(currentUser.expenses);
-
-    
     if(currentUser.expenses.length === 0){
         noExpense.classList.add('active');
         return
     }
-
     for(const expense of currentUser.expenses){
         const expenseDiv = document.createElement('div');
         const  expenseP = document.createElement('p');
@@ -361,30 +362,23 @@ function showExpenses(currentUser){
             if(currentUser.expenses.length === 0){
                 noExpense.classList.add('active');
             }
-            // showExpenses(currentUser)
         })
         expenseP2.appendChild(removeExpenseIcon);
 
         expenseP2.classList.add('display-flex-jcc', 'expense-info');
         expenseDiv.appendChild(expenseP2);
-
         
         expenseTracker.appendChild(expenseDiv)
     }
-    
 }
 
-const expenses = document.getElementById('expenses');
-
+//Show expenses once in expenses.html
 if(expenses){
     let currentUser = retrieveCurrentUser();
-    console.log(currentUser);
     showExpenses(currentUser)
 }
 
-
-const deposit = document.getElementById('deposit');
-
+//Show deposit once in deposit.html
 if(deposit){
     let currentUser = retrieveCurrentUser();
     console.log(currentUser);
@@ -393,11 +387,8 @@ if(deposit){
             e.preventDefault();
             showDeposit(currentUser, accountNumberInput,  amountInput, transactionDescInput);
         })
-        
     }
-    
 }
-
 
 function showDeposit(currentUser, accountNumberInput,  amountInput, transactionDescInput){
     let Users = retrieveUsers()
@@ -467,6 +458,7 @@ function showDeposit(currentUser, accountNumberInput,  amountInput, transactionD
 
 const withdraw = document.getElementById('withdraw');
 
+//Show withdraw once in withdraw.html
 if(withdraw){
     let currentUser = retrieveCurrentUser();
     console.log(currentUser);
@@ -476,10 +468,10 @@ if(withdraw){
             e.preventDefault();
             showWithdraw(currentUser, accountNumberInput,  amountInput, transactionDescInput, passwordInput);
         })
-        
     }
-    
 }
+
+//Show withdraw function
 function showWithdraw(currentUser, accountNumberInput,  amountInput, transactionDescInput, passwordInput){
     let Users = retrieveUsers()
     const accountNumber = accountNumberInput.value.trim();
@@ -518,7 +510,6 @@ function showWithdraw(currentUser, accountNumberInput,  amountInput, transaction
             passwordError.textContent = 'Password required*';
     } 
     
-    
     if(currentUser.accountNumber === accountNumber){
         if(withdrawPassword!== currentUser.password){
             passwordError.classList.add('active');
@@ -537,7 +528,6 @@ function showWithdraw(currentUser, accountNumberInput,  amountInput, transaction
                 entry: 'debit'
         }
         )
-
         updateUsers(Users)
         updateCurrentUser(currentUser)
         Users = retrieveUsers()
@@ -547,15 +537,13 @@ function showWithdraw(currentUser, accountNumberInput,  amountInput, transaction
         accountError.textContent = 'This is not your account number*';
         return
     }
-    
     accountNumberInput.value = '';  
     amountInput.value = '';
     transactionDescInput.value = '';
     passwordInput.value = '';
 }
 
-const transfer = document.getElementById('transfer');
-
+//Show transfer once in transfer.html
 if(transfer){
     let currentUser = retrieveCurrentUser();
     console.log(currentUser);
@@ -565,10 +553,10 @@ if(transfer){
             e.preventDefault();
             showTransfer(currentUser, accountNumberInput, destinationAccountNumberInput, amountInput, transactionDescInput, passwordInput);
         })
-        
     }
-    
 }
+
+//Show transfer function
 function showTransfer(currentUser, accountNumberInput, destinationAccountNumberInput, amountInput, transactionDescInput, passwordInput){
     let Users = retrieveUsers()
     const accountNumber = accountNumberInput.value.trim();
@@ -577,9 +565,7 @@ function showTransfer(currentUser, accountNumberInput, destinationAccountNumberI
     const transferDesc = transactionDescInput.value.trim();
     const transferPassword = passwordInput.value.trim();
     let destinationAccount
-    console.log(typeof transferAmount)
 
-    
     allErrorMessages.forEach((element) => {
             element.classList.remove('active');
         });
@@ -671,20 +657,13 @@ function showTransfer(currentUser, accountNumberInput, destinationAccountNumberI
     passwordInput.value = '';
 }
 
-
-
 if(eyeIcon){
     eyeIcon.addEventListener('click', ()=>{
         let currentName = eyeIcon.getAttribute('name');
         let currentUser = retrieveCurrentUser();
-
-        const eyeClose = 'eye-off';
-        const eyeOpen = 'eye';
-
+        
         newName = currentName===eyeClose?eyeOpen:eyeClose;
-
         eyeIcon.setAttribute('name', newName);
-
         if(newName===eyeOpen){
             const balance = currentUser.balance;
             const formattedBalance = balance.toLocaleString('en-US',{
@@ -701,32 +680,22 @@ if(eyeIcon){
     })
 }
 
+//Copy to cliptray when account number is clicked
 if(accountNumberSpan){
     accountNumberSpan.addEventListener('click', ()=>{
     navigator.clipboard.writeText(accountNumberSpan.textContent);
-
-    
-
     })
 }
 
+//swap css varaibles' value with light or dark theme value
 function swapCssVariables(oldVar, newVar){
     document.querySelector(':root').style.setProperty(oldVar, newVar)
-
 }
-
-
 
 if(lightThemeIcon){
     lightThemeIcon.addEventListener('click', () => {
-        localStorage.setItem('theme', 'light')
-        if(lightThemeIcon && darkThemeIcon && systemDefaultIcon){
-            lightThemeIcon.setAttribute('name', iconOn)
-            darkThemeIcon.setAttribute('name', iconOff);
-            systemDefaultIcon.setAttribute('name', iconOff)
-        }
+    localStorage.setItem('theme', 'light')
         
-
         changeTheme()
     })
 }
@@ -734,11 +703,6 @@ if(lightThemeIcon){
 if(darkThemeIcon){
     darkThemeIcon.addEventListener('click', () => {
         localStorage.setItem('theme', 'dark')
-        if(lightThemeIcon && darkThemeIcon && systemDefaultIcon){
-            darkThemeIcon.setAttribute('name', iconOn)
-            lightThemeIcon.setAttribute('name', iconOff);
-            systemDefaultIcon.setAttribute('name', iconOff)
-        }
         changeTheme()
     })
 }
@@ -746,34 +710,29 @@ if(darkThemeIcon){
 if(systemDefaultIcon){
     systemDefaultIcon.addEventListener('click', () => {
         localStorage.setItem('theme', 'system-default');
-        if(lightThemeIcon && darkThemeIcon && systemDefaultIcon){
-            darkThemeIcon.setAttribute('name', iconOff)
-            lightThemeIcon.setAttribute('name', iconOff);
-            systemDefaultIcon.setAttribute('name', iconOn)
-        }
         changeTheme()
     })
 }
 
 function setLightTheme(){
-    
-    swapCssVariables('--text-light', '#000');
-    swapCssVariables('--text-dark', '#fff');
+    localStorage.setItem('theme', 'light');
 
-    
-    swapCssVariables('--bg-dark-overlay', 'rgba(0, 0, 0, 0.03)');        
-    swapCssVariables('--text-gray', '#000');
-    swapCssVariables('--border-light', 'rgba(0,0,0, 0.1)');
-    swapCssVariables('--bg-dark', '#fff');
     if(lightThemeIcon && darkThemeIcon && systemDefaultIcon){
         lightThemeIcon.setAttribute('name', iconOn)
         darkThemeIcon.setAttribute('name', iconOff);
         systemDefaultIcon.setAttribute('name', iconOff)
-    }   
+    } 
+    swapCssVariables('--text-light', '#000');
+    swapCssVariables('--text-dark', '#fff');
+    swapCssVariables('--bg-dark-overlay', 'rgba(0, 0, 0, 0.03)');        
+    swapCssVariables('--text-gray', '#000');
+    swapCssVariables('--border-light', 'rgba(0,0,0, 0.1)');
+    swapCssVariables('--bg-dark', '#fff');
 }
 
 function setDarkTheme(){
-    localStorage.setItem('theme', 'dark')
+    localStorage.setItem('theme', 'dark');
+
     if(lightThemeIcon && darkThemeIcon && systemDefaultIcon){
         darkThemeIcon.setAttribute('name', iconOn)
         lightThemeIcon.setAttribute('name', iconOff);
@@ -781,12 +740,13 @@ function setDarkTheme(){
     }
     swapCssVariables('--text-light', '#fff');
     swapCssVariables('--text-dark', '#000');
-
     swapCssVariables('--bg-dark', '#050810');
     swapCssVariables('--text-gray', 'rgba(255, 255, 255, 0.44)');
     swapCssVariables('--border-light', 'rgba(255, 255, 255, 0.1)');
     swapCssVariables('--bg-dark-overlay', 'rgba(255, 255, 255, 0.03)');        
 }
+
+//Change Theme
 function changeTheme(){
     let theme = localStorage.getItem('theme');
     console.log(theme)
@@ -796,17 +756,14 @@ function changeTheme(){
     if(theme === 'dark'){
         setDarkTheme()
     }
-
     if(theme === 'system-default'){
         const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
         
         if (prefersDarkTheme.matches){
             setDarkTheme()
-            
         }
         else{
             setLightTheme()
-            
         }
         if(lightThemeIcon && darkThemeIcon && systemDefaultIcon){
                 darkThemeIcon.setAttribute('name', iconOff)
