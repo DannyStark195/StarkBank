@@ -52,8 +52,16 @@ h1{
     font-size: 2rem;
     font-family: var(--logo-font);
 }
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-block-size: 80vh;
+}
 .wrapper{
-    max-width: 600px;
+    inline-size: 100%;
+    max-inline-size: 600px;
     margin: 0 auto;
     background-color: var(--bg-dark-overlay);
     backdrop-filter: blur(10px);
@@ -128,7 +136,7 @@ h1{
 }
 .dark-overlay{
     display: none;
-    min-block-size: 130vh;
+    min-block-size: 100vh;
     background-color: #00000060;
     z-index: 99;
     inline-size: 100%;
@@ -466,5 +474,9 @@ main{
    }
    .no-expense{
         font-size: 1.1rem;
+   }
+
+   .dark-overlay{
+    min-block-size: 110vh;
    }
 }

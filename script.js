@@ -49,6 +49,7 @@ const destinationAccountError = document.getElementById('destination-account-err
 const dashboard = document.getElementById('dashboard');
 const expenses = document.getElementById('expenses');
 const deposit = document.getElementById('deposit');
+const withdraw = document.getElementById('withdraw');
 const transfer = document.getElementById('transfer');
 
 
@@ -214,6 +215,7 @@ function signUp(usernameInput, passwordInput){
    Users.push(newAccount);
    updateUsers(Users)
    displayAccountNumber(newAccountNumber);
+   showSignInAccountNumber(newAccountNumber)
 }
 
 function generateAccountNumber(){
@@ -228,7 +230,9 @@ function displayAccountNumber(accountNumber){
     darkOverlay.classList.add('active');
     accountNumberSpan.textContent = accountNumber;
 }
-
+function showSignInAccountNumber(accountNumber){
+    accountNumberInput.value = accountNumber;
+}
 function signIn(accountNumberInput, accountPasswordInput){
     let Users = retrieveUsers()
     let currentUser = null;
@@ -448,15 +452,12 @@ function showDeposit(currentUser, accountNumberInput,  amountInput, transactionD
         accountError.textContent = 'This is not your account number*';
         return
     }
-    
+    let message = "Deposit Successful";
+    successMessage(message);
     accountNumberInput.value = '';  
     amountInput.value = '';
     transactionDescInput.value = '';
    }
-
-
-
-const withdraw = document.getElementById('withdraw');
 
 //Show withdraw once in withdraw.html
 if(withdraw){
@@ -537,6 +538,8 @@ function showWithdraw(currentUser, accountNumberInput,  amountInput, transaction
         accountError.textContent = 'This is not your account number*';
         return
     }
+    let message = "Withdraw Successful";
+    successMessage(message);
     accountNumberInput.value = '';  
     amountInput.value = '';
     transactionDescInput.value = '';
@@ -650,6 +653,10 @@ function showTransfer(currentUser, accountNumberInput, destinationAccountNumberI
         accountError.textContent = 'This is not your account number*';
         return
     }
+    
+    let message = "Transfer Successful";
+    successMessage(message);
+
     accountNumberInput.value = '';  
     destinationAccountNumberInput.value = '';
     amountInput.value = '';
@@ -771,4 +778,37 @@ function changeTheme(){
                 systemDefaultIcon.setAttribute('name', iconOn)
             }
     }
+}
+
+//
+function successMessage(message){
+    const body = document.querySelector('body')
+    const darkOverlayDiv = document.createElement('div');
+    const successMessageDiv = document.createElement('div');
+    const messageHeadDiv = document.createElement('div');
+    const messageDiv = document.createElement('p');
+    const messageP = document.createElement('p');
+    const messageImg = document.createElement('img');
+    const messageBtn = document.createElement('button');
+
+    darkOverlayDiv.classList.add('dark-overlay', 'active');
+    successMessageDiv.classList.add('success-message', 'display-flex-jcc');
+    messageHeadDiv.classList.add('success-message-heading');
+    messageImg.src = "assets/images/icon-success-check.svg" ;
+    messageImg.alt="icon-success-check";
+    messageP.textContent = message;
+    
+    messageBtn.classList.add('form-btn');
+    messageBtn.textContent = 'Ok'
+    messageBtn.addEventListener('click', () =>{
+        body.removeChild(darkOverlayDiv)
+    })
+
+    messageHeadDiv.appendChild(messageImg);
+    messageHeadDiv.appendChild(messageP);
+    successMessageDiv.appendChild(messageHeadDiv);
+    successMessageDiv.appendChild(messageBtn);
+    darkOverlayDiv.appendChild(successMessageDiv);
+
+    body.appendChild(darkOverlayDiv);
 }
