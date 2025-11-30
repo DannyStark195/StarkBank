@@ -34,14 +34,13 @@ body{
     font-family: sans-serif;
     background-color: var(--bg-dark);
     padding: 1rem;
-    min-height: 100vh;
+    min-block-size: 100vh;
     color: var(--text-light);
 }
 
 header{
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     }
-
 
 h1{
     display: inline-block;
@@ -49,15 +48,15 @@ h1{
     background-clip: text;
     --webkit-background-clip: text;
     color: transparent;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: var(--logo-font);
 }
 
 .main{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    min-block-size: 80vh;
+    min-block-size: 90vh;
 }
 .wrapper{
     inline-size: 100%;
@@ -97,7 +96,7 @@ h1{
     font-size: 0.95rem;
 }
 .form-wrapper .input-wrapper input{
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 1rem;
     background-color: var(--bg-dark-overlay);
     backdrop-filter: blur(10px);
@@ -109,7 +108,7 @@ h1{
 }
 .form-btn{
     padding: 1rem 1.5rem;
-    margin-block: 20px 10px;
+    margin-block-start: 20px;
     border-radius: 30px;
     border: none;
     font-weight: 600;
@@ -117,6 +116,13 @@ h1{
     background-color: var(--text-light);
     color: var(--text-dark);
     cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.form-btn:hover{
+    transform: translateY(-2px);
+    background-color: var(--primary-color);
+    color: var(--text-light);
 }
 .form-link{
     cursor: pointer;
@@ -133,6 +139,8 @@ h1{
     text-align: center;
     font-size: 0.9rem;
     color: var(--text-gray);
+    margin-block-start: 10px;
+
 }
 .dark-overlay{
     display: none;
@@ -263,14 +271,14 @@ h1{
 
 main{
     flex: 1;
-    padding: 3rem 2rem 1rem 2rem;
+    padding: 2.7rem 2rem 1rem 2rem;
     overflow-y: auto;
     max-block-size: 100vh;
 }
 
 
 .greeting{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 .account-details{
     background: var(--primary-gradient);
@@ -415,9 +423,6 @@ main{
     body{
         padding: 10px;
     }
-    header{
-    margin-bottom: 50px;
-    }
     .wrapper{
         padding: 1rem 1rem 0.5rem;
     }
@@ -439,6 +444,7 @@ main{
     }
 
     .nav-bar{
+        flex-direction: row;
         position: fixed;
         bottom: 0;
         overflow-x: auto;
